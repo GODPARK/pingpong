@@ -1,19 +1,21 @@
 {
   "ping": {
+    "cron": "* * * * *",
     "hosts": [
       {
         "name": "",
-        "host": "",
-        "port": "",
-        "path": "",
-        "status": 200
+        "target": "",
+        "status": 200,
+        "token": "",
+        "timeout": 10000
       }
     ]
   },
   "pong": {
     "port": "",
     "status": 200,
-    "logDir": "./log"
+    "logDir": "./log",
+    "token": ""
   },
   "alert": {
     "slack": {

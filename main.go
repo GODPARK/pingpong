@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"log"
 	"os"
+	"pingpong/client"
 	"pingpong/config"
 	"pingpong/cron"
 	"pingpong/router"
@@ -19,13 +20,14 @@ func main() {
 	time.Local = location
 
 	c := config.NewConfig("./config.json")
+	client.NewClient(c)
 
 	lf := getLogFile(c.Pong.LogDir)
 	defer lf.Close()
 	log.SetOutput(lf)
 
 	r := router.NewRouter(c)
-	cr := cron.NewCron()
+	cr := cron.NewCron(c)
 
 	cr.Start()
 

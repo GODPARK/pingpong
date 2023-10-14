@@ -8,18 +8,14 @@ import (
 
 type Config struct {
 	Ping struct {
-		Hosts []struct {
-			Name   string `json:"name"`
-			Host   string `json:"host"`
-			Port   string `json:"port"`
-			Path   string `json:"path"`
-			Status int    `json:"status"`
-		} `json:"hosts"`
+		Cron  string `json:"cron"`
+		Hosts []Host `json:"hosts"`
 	} `json:"ping"`
 	Pong struct {
 		Port   string `json:"port"`
 		Status int    `json:"status"`
 		LogDir string `json:"logDir"`
+		Token  string `json:"token"`
 	} `json:"pong"`
 	Alert struct {
 		Slack struct {
@@ -27,6 +23,14 @@ type Config struct {
 		Email struct {
 		} `json:"email"`
 	} `json:"alert"`
+}
+
+type Host struct {
+	Name    string `json:"name"`
+	Target  string `json:"host"`
+	Token   string `json:"token"`
+	Status  int    `json:"status"`
+	Timeout int    `json:"timeout"`
 }
 
 func NewConfig(path string) *Config {
@@ -49,6 +53,10 @@ func NewConfig(path string) *Config {
 
 	if c.Pong.Status == 0 {
 		c.Pong.Status = 200
+	}
+
+	if c.Ping.Cron == "" {
+		panic("cron expression is empty")
 	}
 
 	return c
