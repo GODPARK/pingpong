@@ -26,11 +26,12 @@ type Config struct {
 }
 
 type Host struct {
-	Name    string `json:"name"`
-	Target  string `json:"host"`
-	Token   string `json:"token"`
-	Status  int    `json:"status"`
-	Timeout int    `json:"timeout"`
+	Name           string `json:"name"`
+	Target         string `json:"host"`
+	Token          string `json:"token"`
+	Status         int    `json:"status"`
+	Timeout        int    `json:"timeout"`
+	ErrorThreshold int    `json:"error_threshold"`
 }
 
 func NewConfig(path string) *Config {
