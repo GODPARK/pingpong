@@ -1,0 +1,26 @@
+{
+  "ping": {
+    "hosts": [
+      {
+        "name": "",
+        "host": "",
+        "port": "",
+        "path": "",
+        "status": 200
+      }
+    ]
+  },
+  "pong": {
+    "port": "",
+    "status": 200,
+    "logDir": "./log"
+  },
+  "alert": {
+    "slack": {
+
+    },
+    "email": {
+
+    }
+  }
+}
